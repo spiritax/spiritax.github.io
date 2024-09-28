@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch - ChatDuChaos</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        #twitch-embed {
+            flex: 3;
+        }
+        #twitch-chat {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="twitch.html">Twitch</a></li>
+                <li><a href="commandes.html" class="nav-link">Commandes</a></li>
+                <li><a href="giveaway.html" class="nav-link">Giveaway</a></li>
+                <li><a href="planning.html" class="nav-link">Planning</a></li>
+                <li><a href="setup.html" class="nav-link">Setup</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.twitch.tv/chatduchaos" target="_blank"><img src="https://raw.githubusercontent.com/chatduchaos/ChatDuChaos/main/images/Twitch%20Logo.png" alt="Twitch Logo"></a>
+            <a href="https://discord.com/invite/lataverneduchat" target="_blank"><img src="https://github.com/chatduchaos/ChatDuChaos/blob/main/images/Logo%20Discord.png?raw=true" alt="Discord Logo"></a>
+            <a href="https://www.youtube.com/@ChatDuChaos" target="_blank"><img src="https://raw.githubusercontent.com/chatduchaos/ChatDuChaos/main/images/Logo%20YouTube.png" alt="YouTube Logo"></a>
+            <a href="https://www.tiktok.com/@chatduchaos" target="_blank"><img src="https://raw.githubusercontent.com/chatduchaos/ChatDuChaos/main/images/Logo%20TikTok.png" alt="TikTok Logo"></a>
+            <a href="https://x.com/chatduchaos" target="_blank"><img src="https://raw.githubusercontent.com/chatduchaos/ChatDuChaos/main/images/Logo%20X.png" alt="Twitter Logo"></a>
+            <a href="https://amzn.to/3MbaKcu" target="_blank"><img src="https://github.com/chatduchaos/ChatDuChaos/blob/main/images/Logo%20Amazon.png?raw=true" alt="Amazon Logo"></a>
+            <a href="https://www.instagram.com/chatduchaos/" target="_blank"><img src="https://raw.githubusercontent.com/chatduchaos/ChatDuChaos/main/images/Logo%20Instagram.png" alt="Instagram Logo"></a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="twitch-embed" class="twitch-embed"></div>
+    </main>
+
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script>
+        new Twitch.Embed("twitch-embed", {
+            width: "100%",
+            height: "100%",
+            channel: "chatduchaos",
+            layout: "video-with-chat",
+            parent: ["chatduchaos.com"]
+        });
+    </script>
+
+    <footer>
+        <p><a href="mailto:chatduchaos@gmail.com">Contactez-moi par email</a></p>
+        <p>&copy; 2024 ChatDuChaos. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

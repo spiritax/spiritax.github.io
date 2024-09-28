@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #333;
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #333, #555);
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid white;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+    color: #00aaff;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.5);
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.twitch-embed {
+    width: 100%;
+}
+
+.profile-image {
+    max-width: 40%;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    bottom: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+footer a {
+    color: #00aaff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.hidden-embed {
+    display: none;
+    position: fixed;
+    top: 10%;
+    right: 0;
+    width: 10%;
+    z-index: 1000;
+}
+
+.hidden-embed iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#planning {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100% - 100px); /* Adjust for header and footer */
+    margin-top: 80px;
+}
+
+.day {
+    flex: 1;
+    border-right: 2px solid white;
+    text-align: center;
+    padding: 20px;
+}
+
+.day:last-child {
+    border-right: none;
+}
+
+h1 {
+    margin: 20px;
+}
+
+.full-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500; /* Adjust as needed */
+}
+
+.gleam-widget {
+    width: 100%;
+    height: 100vh; /* Full height */
+    border: none; /* No border */
+}
+
+/* New CSS for external link */
+.external-link {
+    margin-top: 20px;
+    color: #00aaff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center; /* Assures the text is centered */
+}
+
+.external-link:hover {
+    text-decoration: underline;
+    color: #ff6600;
+}
+
+/* CSS for Planning */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Supprime l'espace entre les cellules */
+}
+
+th, td {
+    padding: 15px; /* Espace à l'intérieur des cellules */
+    text-align: center; /* Centrer le texte */
+    border: 2px solid #00aaff; /* Bordure autour des cellules */
+}
+
+th {
+    background-color: #444; /* Couleur de fond pour les en-têtes */
+    color: white; /* Couleur du texte des en-têtes */
+}
+
+td {
+    background-color: #333; /* Couleur de fond pour les cellules */
+    color: white; /* Couleur du texte */
+    transition: background-color 0.3s; /* Animation de changement de couleur */
+}
+
+td:hover {
+    background-color: #555; /* Changement de couleur au survol */
+}
+
+/* Styles pour le bouton et le modal */
+.twitch-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #6441a5;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.modal {
+    display: none; /* Masquer par défaut */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    height: 80%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+
+.modal-header {
+    padding: 10px;
+    background-color: #6441a5;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-header div {
+    display: flex;
+    gap: 10px; /* Espacement entre les boutons */
+}
+
+.close,
+.toggle-chat {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus,
+.toggle-chat:hover,
+.toggle-chat:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    flex: 1;
+    display: flex;
+}
+
+#twitch-embed {
+    width: 100%;
+    height: 100%;
+}
+
+.modal.minimized {
+    width: 300px;
+    height: 200px;
+    bottom: 20px;
+    right: 20px;
+    top: auto;
+    left: auto;
+    margin: 0;
+    position: fixed;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.modal.minimized .modal-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal.minimized .modal-header {
+    display: none;
+}
+
+.modal.minimized #twitch-embed {
+    height: 100%;
+    width: 100%;
+}
+
+/* Styles pour masquer et afficher le chat */
+.chat-hidden {
+    display: none !important;
+}
+
+/* Styles pour la mise en page */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.video-container {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 300px; /* Ajustez la largeur selon vos besoins */
+}
+
+.modal-body {
+    display: flex;
+    flex: 1;
+}
+
+.modal.minimized .chat-container {
+    display: none;
+}
+
+.modal.minimized .modal-body {
+    flex-direction: column;
+}
+
+.close-embed {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Place le bouton de fermeture à droite */
+    background-color: #6441a5;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+}
+
+.modal.minimized .close-embed {
+    display: block;
+}
+
+.restore {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    background-color: #6441a5;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+}
+
+.modal.minimized .restore {
+    display: block;
+}
